@@ -4,7 +4,7 @@
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 Needs a MySQL-container to link to.
-I used paintedfox/mariadb (equals MySQL 5.5)
+I used paintedfox/mariadb (which equals MySQL 5.5)
 
 **Start the containers**
 

@@ -2,6 +2,7 @@ FROM phusion/baseimage:latest
 
 MAINTAINER bokh@xs4all.nl
 
+# Change this when a newer version is released:
 ENV TYPO3_VERSION 6.2.5
 
 RUN apt-get update -qq && \
