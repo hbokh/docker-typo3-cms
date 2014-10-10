@@ -5,7 +5,7 @@ Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.d
 Needs a MySQL-container to link to.
 I used paintedfox/mariadb (equals MySQL 5.5)
 
-**Starting the containers**
+**Start the containers**
 
 ```docker run -td --name mariadb -e USER=user -e PASS=password  paintedfox/mariadb```
 
