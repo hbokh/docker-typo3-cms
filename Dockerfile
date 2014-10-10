@@ -15,7 +15,7 @@ RUN mkdir -p /var/www/site/htdocs && \
     tar zxf typo3_src-${TYPO3_VERSION}.tar.gz && \
     rm typo3_src-${TYPO3_VERSION}.tar.gz && \
     cd htdocs && \
-    ln -s ../typo3_src-$TYPO3_VERSION typo3_src && \
+    ln -s ../typo3_src-${TYPO3_VERSION} typo3_src && \
     ln -s typo3_src/index.php index.php && \
     ln -s typo3_src/typo3 typo3 && \
     touch FIRST_INSTALL && \

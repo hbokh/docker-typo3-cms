@@ -1,5 +1,6 @@
 ##Docker TYPO3 CMS##
 
+[TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (LTS) on nginx and PHP-FPM.  
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 Needs a MySQL-container to link to.
