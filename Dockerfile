@@ -1,6 +1,17 @@
-FROM phusion/baseimage:latest
+FROM phusion/baseimage:0.9.15
 
 MAINTAINER bokh@xs4all.nl
+
+# Set correct environment variables.
+ENV HOME /root
+
+# Regenerate SSH host keys. baseimage-docker does not contain any, so you
+# have to do that yourself. You may also comment out this instruction; the
+# init system will auto-generate one during boot.
+RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
+
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
 
 # Change this when a newer version is released:
 ENV TYPO3_VERSION 6.2.5
@@ -10,7 +21,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C  && \
        > /etc/apt/sources.list.d/launchpad-ondrej-php5.list
 
 RUN apt-get update -qq && \
-    apt-get install -qqy wget nginx mysql-client php5 php5-cli php5-common php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick
+    apt-get install -qqy wget nginx mysql-client php5 php5-cli php5-common php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD default.conf /etc/nginx/sites-available/default
 
