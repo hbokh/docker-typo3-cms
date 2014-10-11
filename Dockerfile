@@ -5,6 +5,10 @@ MAINTAINER bokh@xs4all.nl
 # Change this when a newer version is released:
 ENV TYPO3_VERSION 6.2.5
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C  && \
+    echo "deb http://ppa.launchpad.net/ondrej/php5/ubuntu $(lsb_release -cs) main" \
+       > /etc/apt/sources.list.d/launchpad-ondrej-php5.list
+
 RUN apt-get update -qq && \
     apt-get install -qqy wget nginx mysql-client php5 php5-cli php5-common php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick
 
@@ -20,7 +24,10 @@ RUN mkdir -p /var/www/site/htdocs && \
     ln -s typo3_src/index.php index.php && \
     ln -s typo3_src/typo3 typo3 && \
     touch FIRST_INSTALL && \
-    chown -R www-data:www-data /var/www
+    chown -R www-data:www-data /var/www && \
+    sed -i 's/max_execution_time = 30/max_execution_time = 240/g' /etc/php5/fpm/php.ini && \
+    sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php5/fpm/php.ini && \
+    sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php5/fpm/php.ini
 
 ADD start.sh /start.sh
 
