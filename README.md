@@ -1,20 +1,21 @@
 # Docker TYPO3 CMS
 
-[TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (LTS) on nginx and PHP-FPM.  
+Container with the latest [TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (LTS) on NGINX and PHP-FPM.  
+Great for testing and demo's.   
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
-
-Needs a MySQL-container to link to.
-I used paintedfox/mariadb (which equals MySQL 5.5)
 
 ## Start the containers
 
-First start the database:  
+The TYPO3-container needs a MySQL-container to link to.  
+I used paintedfox/mariadb (which equals MySQL 5.5).  
+
+First install and start the database:  
 `docker run -td --name mariadb -e USER=user -e PASS=password paintedfox/mariadb`
 
 Followed by the webserver on port 80 and linked to the database:  
 `docker run -td --name typo3-cms -p 80:80 --link mariadb:db hbokh/docker-typo3-cms`
 
-Next, open a webbrowser to *http://< container IP >/site/htdocs/* and configure TYPO3.  
+Next, open a webbrowser to *http://< container IP >/* and configure TYPO3.  
 For the database-host use the name "db", with USER and PASS as set for the database-container.
 
 ## Build the container
@@ -46,4 +47,4 @@ A fix is to login into the container and add a line to file `/var/www/site/htdoc
 		'trustedHostsPattern' => '.*',
 	),
 
-Bummer!! Because this is somewhat of a showstopper to use the container straight away...
+This is somewhat of a showstopper to use the container straight away...
