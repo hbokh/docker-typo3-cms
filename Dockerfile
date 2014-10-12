@@ -21,7 +21,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C  && \
        > /etc/apt/sources.list.d/launchpad-ondrej-php5.list
 
 RUN apt-get update -qq && \
-    apt-get install -qqy wget nginx mysql-client php5 php5-cli php5-common php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick && \
+    apt-get install -qqy wget unzip nginx mysql-client php5 php5-cli php5-common php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD default.conf /etc/nginx/sites-available/default
