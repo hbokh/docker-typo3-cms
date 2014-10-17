@@ -34,16 +34,21 @@ For the database-host use the name "db", with USER and PASS as set for the datab
 
 ## Issues
 
-TYPO3 gives an error after installation:  
+TYPO3 gives this error after installation:  
 
 ![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_error.png)
 
 This is related to [TYPO3-CORE-SA-2014-001: Multiple Vulnerabilities in TYPO3 CMS](http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2014-001/)
 
-A fix is to login into the container and add a line to file `/var/www/site/htdocs/typo3conf/LocalConfiguration.php`:
+A fix is to login into the container and add a line to file `/var/www/site/htdocs/typo3conf/LocalConfiguration.php`, using *docker exec* (introduced in docker v1.3):
+
+`$ docker exec -it typo3-cms bash`  
+`root@01c255c6173d:/# vi /var/www/site/htdocs/typo3conf/LocalConfiguration.php`
+
+At the bottom of the file, within the SYS-array: 
 
 	'SYS' => array(
-                [ ... ];
+                [ ... ],
 		'trustedHostsPattern' => '.*',
 	),
 
