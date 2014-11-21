@@ -1,13 +1,13 @@
 # Docker TYPO3 CMS
 
-Container with the latest [TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (LTS) on NGINX and PHP-FPM.  
+Container with the latest [TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (LTS) on nginx and PHP-FPM.  
 Great for testing and demo's.   
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 ## Start the containers
 
 The TYPO3-container needs a MySQL-container to link to.  
-I used paintedfox/mariadb (which equals MySQL 5.5).  
+I used [paintedfox/mariadb](https://registry.hub.docker.com/u/paintedfox/mariadb/) (which equals MySQL 5.5).
 
 First install and start the database:  
 `docker run -td --name mariadb -e USER=user -e PASS=password paintedfox/mariadb`
@@ -28,8 +28,6 @@ For the database-host use the name "db", with USER and PASS as set for the datab
 
 ## TODO
 
-- ~~Use deb.sury.org PPA (ondrej/php5)~~
-- ~~Setup PHP parameters to pass the system environment check~~
 - Mount external data inside the container.
 
 ## Issues
