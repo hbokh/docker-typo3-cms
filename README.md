@@ -6,7 +6,8 @@ Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.d
 
 ## Quick start
 
-[Install fig](http://www.fig.sh/install.html) and run `fig up`.
+[Install fig](http://www.fig.sh/install.html) and run `fig up`.  
+Use mariadb/p4ssw0rd as database-credentials.
 
 ## Start the containers
 
@@ -14,7 +15,7 @@ The TYPO3-container needs a MySQL-container to link to.
 I used [paintedfox/mariadb](https://registry.hub.docker.com/u/paintedfox/mariadb/) (which equals MySQL 5.5).
 
 First install and start the database:  
-`docker run -td --name mariadb -e USER=user -e PASS=password paintedfox/mariadb`
+`docker run -td --name mariadb -e USER=mariadb -e PASS=p4ssw0rd paintedfox/mariadb`
 
 Followed by the webserver on port 80 and linked to the database:  
 `docker run -td --name typo3-cms -p 80:80 --link mariadb:db hbokh/docker-typo3-cms`
