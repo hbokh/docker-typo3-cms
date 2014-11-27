@@ -4,6 +4,10 @@ Container with the latest [TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (
 Great for testing and demo's.   
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
+## Quick start
+
+[Install fig](http://www.fig.sh/install.html) and run `fig up`.
+
 ## Start the containers
 
 The TYPO3-container needs a MySQL-container to link to.  
@@ -18,7 +22,11 @@ Followed by the webserver on port 80 and linked to the database:
 Next, open a webbrowser to *http://< container IP >/* and configure TYPO3.  
 For the database-host use the name "db", with USER and PASS as set for the database-container.
 
-## Build the container
+For a start you can install the TYPO3 Introduction Package:
+
+![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_introduction.png)
+
+## Build the container from source
 
 `git clone https://github.com/hbokh/docker-typo3-cms.git .`
 
