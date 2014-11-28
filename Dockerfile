@@ -19,7 +19,6 @@ RUN apt-get update -qq && \
     ln -s ../typo3_src-${TYPO3_VERSION} typo3_src && \
     ln -s typo3_src/index.php index.php && \
     ln -s typo3_src/typo3 typo3 && \
-    touch FIRST_INSTALL && \
     chown -R www-data:www-data /var/www && \
     sed -i 's/max_execution_time = 30/max_execution_time = 240/g' /etc/php5/fpm/php.ini && \
     sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php5/fpm/php.ini && \
