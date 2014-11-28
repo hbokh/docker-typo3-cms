@@ -1,13 +1,32 @@
 # Docker TYPO3 CMS
 
-Container with the latest [TYPO3 CMS](http://typo3.org/typo3-cms/) version 6.2 (LTS) on nginx and PHP-FPM.  
-Great for testing and demo's.   
+Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM.  
+Great for learning, testing and demo's. **Don't use in production!**   
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 ## Quick start
 
 [Install fig](http://www.fig.sh/install.html) and run `fig up`.  
-Use mariadb/p4ssw0rd as database-credentials.
+
+File: fig.yml:
+
+```
+mariadb:
+  image: paintedfox/mariadb:latest
+  environment:
+    - USER=mariadb
+    - PASS=p4ssw0rd
+typo3cms:
+  image: hbokh/docker-typo3-cms:latest
+  links:
+    - mariadb:db
+  ports:
+    - "80:80"
+```
+
+Use `mariadb/p4ssw0rd` for the database-credentials.  
+
+Restart after the stack has been stopped, use `fig up --no-recreate`.
 
 ## Manually
 
@@ -23,9 +42,10 @@ Followed by the webserver on port 80 and linked to the database:
 ## Configure TYPO3 CMS
 
 Open a webbrowser to *http://< container IP >/* and configure TYPO3.  
-For the database-host use the name "db", with USER and PASS as set for the database-container (mariadb/p4ssw0rd).
+First time startup takes a while, beacuse extensions etc. are downloaded and installed.  
+For the database-host use the name "db", with USER and PASS as set for the database-container (`mariadb/p4ssw0rd`).
 
-For a start you can install the TYPO3 Introduction Package:
+You can install the TYPO3 Introduction Package for a start:
 
 ![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_introduction.png)
 
