@@ -24,9 +24,9 @@ RUN apt-get update -qq && \
     sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php5/fpm/php.ini && \
     sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php5/fpm/php.ini
 
-ADD default.conf /etc/nginx/sites-available/default
+COPY default.conf /etc/nginx/sites-available/default
 
-ADD start.sh /start.sh
+COPY start.sh /start.sh
 
 RUN chmod 0755 /start.sh && \
     echo "daemon off;" >> /etc/nginx/nginx.conf
