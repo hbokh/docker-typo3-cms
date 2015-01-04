@@ -41,7 +41,7 @@ Followed by the webserver on port 80 and linked to the database:
 
 ## Configure TYPO3 CMS
 
-Open a webbrowser to *http://< container IP >/* and configure TYPO3.  
+Open a webbrowser to `http://< container IP >/` and configure TYPO3.  
 First time startup takes a while, beacuse extensions etc. are downloaded and installed.  
 For the database-host use the name "db", with USER and PASS as set for the database-container (`mariadb/p4ssw0rd`).
 
