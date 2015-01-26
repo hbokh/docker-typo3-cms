@@ -31,4 +31,6 @@ COPY start.sh /start.sh
 RUN chmod 0755 /start.sh && \
     echo "daemon off;" >> /etc/nginx/nginx.conf
 
+EXPOSE 80
+
 CMD /start.sh
