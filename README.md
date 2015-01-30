@@ -42,9 +42,6 @@ Followed by the webserver on port 80 and linked to the database:
 ## Configure TYPO3 CMS
 
 Open a webbrowser to `http://< container IP >/` and configure TYPO3.  
-First time startup takes a while, beacuse extensions etc. are downloaded and installed.  
-
-Open a webbrowser to *http://< container IP >/* and configure TYPO3.  
 First time startup takes a while, because extensions etc. are downloaded and installed.  
 
 For the database-host use the name "db", with USER and PASS as set for the database-container (`mariadb/p4ssw0rd`).
@@ -75,7 +72,7 @@ This is related to [TYPO3-CORE-SA-2014-001: Multiple Vulnerabilities in TYPO3 CM
 
 A fix is to login into the container and add a line to file `/var/www/site/htdocs/typo3conf/LocalConfiguration.php`, using *docker exec* (introduced in docker v1.3):
 
-`$ docker exec -it typo3-cms bash`  
+`$ docker exec -it typo3cms bash`  
 `root@01c255c6173d:/# vi /var/www/site/htdocs/typo3conf/LocalConfiguration.php`
 
 At the bottom of the file, within the SYS-array: 
