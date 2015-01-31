@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 if [[ -e /firstrun ]]; then
 echo "Not first run so skipping initialization"
