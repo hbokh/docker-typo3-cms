@@ -3,7 +3,7 @@ FROM ubuntu:trusty
 MAINTAINER bokh@xs4all.nl
 
 # Change this when a newer version is released:
-ENV TYPO3_VERSION 6.2.9
+ENV TYPO3_VERSION 6.2.10
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C  && \
     echo "deb http://ppa.launchpad.net/ondrej/php5/ubuntu $(lsb_release -cs) main" \
@@ -34,3 +34,4 @@ RUN chmod 0755 /start.sh && \
 EXPOSE 80
 
 CMD /start.sh
+
