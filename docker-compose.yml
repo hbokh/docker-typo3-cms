@@ -1,0 +1,11 @@
+mariadb:
+  image: paintedfox/mariadb:latest
+  environment:
+    - USER=mariadb
+    - PASS=p4ssw0rd
+typo3cms:
+  image: hbokh/docker-typo3-cms:latest
+  links:
+    - mariadb:db
+  ports:
+    - "80:80"
