@@ -6,9 +6,9 @@ Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.d
 
 ## Quick start
 
-[Install fig](http://www.fig.sh/install.html) and run `fig up`.  
+[Install docker-compose](http://docs.docker.com/compose/install/#install-compose) and run `docker-compose up`.  
 
-File: fig.yml:
+File: docker-compose.yml:
 
 ```
 mariadb:
@@ -26,7 +26,7 @@ typo3cms:
 
 Use `mariadb/p4ssw0rd` for the database-credentials.  
 
-Restart after the stack has been stopped, use `fig up --no-recreate`.
+Restart after the stack has been stopped, use `docker-compose up --no-recreate`.
 
 ## Manually
 
