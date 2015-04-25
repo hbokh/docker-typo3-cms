@@ -1,7 +1,7 @@
 # Docker TYPO3 CMS
 
 Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM.  
-Great for learning, testing and demo's. **Don't use in production!**   
+Great for learning, testing and demo's. **Don't use in production!**
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 ## Quick start
@@ -64,6 +64,8 @@ You can install the TYPO3 Introduction Package for a start:
 
 ## Issues
 
+###TYPO3 error
+
 TYPO3 gives this error after installation:  
 
 ![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_error.png)
@@ -75,7 +77,7 @@ A fix is to login into the container and add a line to file `/var/www/site/htdoc
 `$ docker exec -it typo3cms bash`  
 `root@01c255c6173d:/# vi /var/www/site/htdocs/typo3conf/LocalConfiguration.php`
 
-At the bottom of the file, within the SYS-array: 
+At the bottom of the file, within the SYS-array:
 
 	'SYS' => array(
                 [ ... ],
@@ -83,3 +85,11 @@ At the bottom of the file, within the SYS-array:
 	),
 
 This is somewhat of a showstopper to use the container straight away, but is only needed the first time.
+
+### Environment
+
+When running the DB-instance and webserver in seperate containers on separate hosts (e.g. when using Rancher), these environment setting have to be set too: `DB_ENV_USER=mariadb` and `DB_ENV_PASS=p4ssw0rd`. If not, an error like this will be shown in the container-log of the DB:
+
+    Access denied for user 'root'@'<IP-address>' (using password: NO)
+
+For some reason this is not needed when running on the same Docker-host.
