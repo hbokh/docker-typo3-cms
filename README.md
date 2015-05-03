@@ -83,7 +83,7 @@ $ docker exec -it typo3cms bash
 root@01c255c6173d:/# vi /var/www/site/htdocs/typo3conf/LocalConfiguration.php
 ```
 
-At the bottom of the file, within the SYS-array, add this line containing *trustedHostPattern*:
+At the bottom of the file, within the SYS-array, add this line containing the *trustedHostsPattern*:
 
 	'SYS' => array(
                 [ ... ],
