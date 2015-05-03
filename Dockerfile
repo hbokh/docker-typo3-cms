@@ -2,19 +2,26 @@ FROM ubuntu:trusty
 
 MAINTAINER bokh@xs4all.nl
 
-# Change this when a newer version is released:
+# Set this to the latest TYPO3 CMS version:
 ENV TYPO3_VERSION 6.2.12
 
 ENV DB_ENV_USER=mariadb DB_ENV_PASS=p4ssw0rd
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C  && \
-    echo "deb http://ppa.launchpad.net/ondrej/php5/ubuntu $(lsb_release -cs) main" \
-       > /etc/apt/sources.list.d/launchpad-ondrej-php5.list
+# Repo's for nginx and PHP5 PPA
+RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 && \
+    echo "deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx" > /etc/apt/sources.list.d/nginx.list
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
+    echo "deb http://ppa.launchpad.net/ondrej/php5/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/launchpad-ondrej-php5.list
+
+# Install packages required for TYPO3
 RUN apt-get update -qq && \
-    apt-get install -qqy wget unzip nginx mysql-client php5 php5-cli php5-common php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    mkdir -p /var/www/site/htdocs && \
+    apt-get install -qqy wget nginx mysql-client && \
+    apt-get install -qqy --no-install-recommends php5-curl php5-fpm php5-gd php5-imagick php5-mcrypt php5-memcache php5-mysql graphicsmagick && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install TYPO3 CMS
+RUN mkdir -p /var/www/site/htdocs && \
     cd /var/www/site && \
     wget -O - http://prdownloads.sourceforge.net/typo3/typo3_src-${TYPO3_VERSION}.tar.gz | tar zxf - && \
     cd htdocs && \
@@ -26,13 +33,14 @@ RUN apt-get update -qq && \
     sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php5/fpm/php.ini && \
     sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php5/fpm/php.ini
 
-COPY default.conf /etc/nginx/sites-available/default
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 COPY start.sh /start.sh
 
-RUN chmod 0755 /start.sh && \
-    echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN chmod 0755 /start.sh
 
 EXPOSE 80
 
-CMD /start.sh
+CMD ["/start.sh"]
