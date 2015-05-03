@@ -5,8 +5,7 @@ MAINTAINER bokh@xs4all.nl
 # Change this when a newer version is released:
 ENV TYPO3_VERSION 6.2.12
 
-ENV DB_ENV_USER=mariadb
-ENV DB_ENV_PASS=p4ssw0rd
+ENV DB_ENV_USER=mariadb DB_ENV_PASS=p4ssw0rd
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C  && \
     echo "deb http://ppa.launchpad.net/ondrej/php5/ubuntu $(lsb_release -cs) main" \
