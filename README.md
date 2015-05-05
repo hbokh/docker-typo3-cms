@@ -2,6 +2,9 @@
 
 Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM.  
 Great for learning, testing and demo's. **Don't use in production!**
+
+[![hbokh docker-typo3-cms](http://dockeri.co/image/hbokh/docker-typo3-cms)](https://hub.docker.com/u/hbokh/docker-typo3-cms/)
+
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 ## Quick start
