@@ -29,7 +29,7 @@ RUN mkdir -p /var/www/site/htdocs && \
     ln -s typo3_src/index.php index.php && \
     ln -s typo3_src/typo3 typo3 && \
     chown -R www-data:www-data /var/www && \
-    sed -i 's/max_execution_time = 30/max_execution_time = 240/g' /etc/php5/fpm/php.ini && \
+    sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php5/fpm/php.ini && \
     sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php5/fpm/php.ini && \
     sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php5/fpm/php.ini
 
