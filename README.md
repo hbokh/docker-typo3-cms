@@ -70,33 +70,11 @@ You can install the TYPO3 Introduction Package for a start:
 
 ## Issues
 
-###TYPO3 error
+The issue with the *trustedHostsPattern* was fixed in `start.sh` with a suggestion by [Giovanni Minniti](https://github.com/giminni). (20151227)
 
-TYPO3 gives this error after installation:  
+### RealURL
 
-![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_error.png)
-
-This is related to [TYPO3-CORE-SA-2014-001: Multiple Vulnerabilities in TYPO3 CMS](http://typo3.org/teams/security/security-bulletins/typo3-core/typo3-core-sa-2014-001/).
-
-A fix is to login into the container and add a line to the file
-
- `/var/www/site/htdocs/typo3conf/LocalConfiguration.php`
-
-using *docker exec* (introduced in Docker v1.3):  `$ docker exec -it <container ID> bash`  
-
-```
-$ docker exec -it typo3cms bash
-root@01c255c6173d:/# vi /var/www/site/htdocs/typo3conf/LocalConfiguration.php
-```
-
-At the bottom of the file, within the SYS-array, add this line containing the *trustedHostsPattern*:
-
-	'SYS' => array(
-                [ ... ],
-		'trustedHostsPattern' => '.*',
-	),
-
-This is somewhat of a showstopper to use the container straight away, but is only needed the first time.
+To use RealURL in e.g. the official introduction package go to "Extension Manager" --> "Configure RealURL" and set "Enable automatic configuration". Clear both caches and reload the site. (20151227)
 
 ### Environment
 
