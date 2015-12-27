@@ -7,7 +7,7 @@ Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, serv
 Great for learning, testing and demo's. **Don't use in production!**
 
 This little project was started to get some personal experience with multiple Docker-containers and TYPO3.   
-There are **far better** alternatives to be found, for example the [TYPO3-docker-boilerplate](https://github.com/giminni/TYPO3-docker-boilerplate)!
+There are **far better** alternatives to be found, for example the [TYPO3-docker-boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)!
 
 Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
