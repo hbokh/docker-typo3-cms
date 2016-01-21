@@ -75,7 +75,7 @@ The issue with the *trustedHostsPattern* was fixed in `start.sh` with a suggesti
 
 ### RealURL
 
-To use RealURL in e.g. the official introduction package go to "Extension Manager" --> "Configure RealURL" and set "Enable automatic configuration". Clear both caches and reload the site. (20151227)
+To use RealURL in e.g. the official introduction package go to "Extension Manager" --> "Configure RealURL" and set "Enable automatic configuration". Force a save by clicking the save-button, clear the frontend caches (lightning-icon top right) and reload the site. (20151227)
 
 ### Environment
 

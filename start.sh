@@ -34,5 +34,6 @@ EOF
   touch /firstrun
 fi
 
-service php5-fpm start
+#service php5-fpm start
+service php7.0-fpm start
 nginx 
