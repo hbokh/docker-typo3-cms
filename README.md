@@ -13,32 +13,22 @@ I was inspired by and have borrowed from [paimpozhil/magento-docker](https://reg
 
 ## Quick start
 
-[Install docker-compose](http://docs.docker.com/compose/install/#install-compose) and run `docker-compose up`.  
+- Install [Docker](https://docs.docker.com/engine/installation/) and [docker-compose](http://docs.docker.com/compose/install/#install-compose)
+- Clone this repository: `git clone https://github.com/hbokh/docker-typo3-cms.git .`  
+- Run `docker-compose up`  
+- In a browser connect to `http://<container IP>/`
+- Step [1] needs no extra input
+- In step "[2] Database connection", use `mariadb / p4ssw0rd` for Username / Password and `db` for Host.
+- In step "[3] Select database", select "Use an existing empty database: TYPO3"
+- In step "[4] Create user and import base data" add an admin-user with any password
+- In step [5], if you want a pre-configured site, select "Yes"
+- Login with the admin-account and the password you just set. Done!
 
-File: docker-compose.yml:
-
-```
-mariadb:
-  image: paintedfox/mariadb:latest
-  environment:
-    - USER=mariadb
-    - PASS=p4ssw0rd
-typo3cms:
-  image: hbokh/docker-typo3-cms:latest
-  links:
-    - mariadb:db
-  ports:
-    - "80:80"
-```
-
-Use `mariadb/p4ssw0rd` for the database-credentials.  
-
-Restart after the stack has been stopped, use `docker-compose up --no-recreate`.
+If you need to restart after the stack has been stopped, use `docker-compose up --no-recreate`. This will prevent the containers from being recreated.
 
 ## Manually
 
-The TYPO3-container needs a MySQL-container to link to.  
-I used [paintedfox/mariadb](https://registry.hub.docker.com/u/paintedfox/mariadb/) (which equals MySQL 5.5).
+The TYPO3-container needs a MySQL-container to link to. I used [paintedfox/mariadb](https://registry.hub.docker.com/u/paintedfox/mariadb/) (which equals MySQL 5.5).
 
 First install and start the database:  
 `docker run -td --name mariadb -e USER=mariadb -e PASS=p4ssw0rd paintedfox/mariadb`
@@ -46,14 +36,11 @@ First install and start the database:
 Followed by the webserver on port 80 and linked to the database:  
 `docker run -td --name typo3-cms -p 80:80 --link mariadb:db hbokh/docker-typo3-cms`
 
-## Configure TYPO3 CMS
+Next go through the same steps as mentioned in the Quick start.
 
-Open a webbrowser to `http://<container IP>/` and configure TYPO3.  
-First time startup takes a while, because extensions etc. are downloaded and installed.  
+## TYPO3 Introduction Package
 
-For the database-host use the name "db", with USER and PASS as set for the database-container (`mariadb/p4ssw0rd`).
-
-You can install the TYPO3 Introduction Package for a start:
+I suggest you install the TYPO3 Introduction Package to get started:
 
 ![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_introduction.png)
 
