@@ -15,7 +15,8 @@ I was inspired by and have borrowed from [paimpozhil/magento-docker](https://reg
 
 - Install [Docker](https://docs.docker.com/engine/installation/) and [docker-compose](http://docs.docker.com/compose/install/#install-compose)
 - Clone this repository: `git clone https://github.com/hbokh/docker-typo3-cms.git .`  
-- Run `docker-compose up`  
+- `cd docker-typo3-cms`
+- Run `docker-compose up`
 - In a browser connect to `http://<container IP>/`
 - Step [1] needs no extra input
 - In step "[2] Database connection", use `mariadb / p4ssw0rd` for Username / Password and `db` for Host.
