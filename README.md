@@ -3,13 +3,13 @@
 [![](https://badge.imagelayers.io/hbokh/docker-typo3-cms.svg)](https://imagelayers.io/?images=hbokh/docker-typo3-cms:latest 'Get your own badge on imagelayers.io')
 
 
-Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM.  
+Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM. As of January 2016 on PHP7.  
 Great for learning, testing and demo's. **Don't use in production!**
 
 This little project was started to get some personal experience with multiple Docker-containers and TYPO3.   
-There are **far better** alternatives to be found, for example the [TYPO3-docker-boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)!
+Keep in mind there are **far better** alternatives to be found, for example the [TYPO3-docker-boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)!
 
-Inspired by and borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
+I was inspired by and have borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
 ## Quick start
 
@@ -56,6 +56,15 @@ For the database-host use the name "db", with USER and PASS as set for the datab
 You can install the TYPO3 Introduction Package for a start:
 
 ![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_introduction.png)
+
+## Opcache Control Panel
+
+To check and control the Zend OPcache, *Opcache Control Panel* is installed in the webroot.  
+Source on Github Gist: [ck-on/ocp.php](https://gist.github.com/ck-on/4959032/?ocp.php)  
+Connect to OCP:`http://<container IP>/ocp.php`  
+
+![image](https://github.com/hbokh/docker-typo3-cms/raw/master/Opcache_Control_Panel.png)
+
 
 ## Build the container from source
 
