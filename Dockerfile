@@ -20,7 +20,7 @@ RUN apt-get install -qqy wget nginx mysql-client && \
     apt-get install -qqy --no-install-recommends php-curl php7.0-fpm php-gd php-imagick php-mcrypt php7.0-mysql ghostscript graphicsmagick && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Install TYPO3 CMS
+# Install TYPO3 CMS and Opcache Control Panel (Bitly-link)
 RUN mkdir -p /var/www/site/htdocs && \
     cd /var/www/site && \
     wget -O - http://prdownloads.sourceforge.net/typo3/typo3_src-${TYPO3_VERSION}.tar.gz | tar zxf - && \
@@ -28,6 +28,7 @@ RUN mkdir -p /var/www/site/htdocs && \
     ln -s ../typo3_src-${TYPO3_VERSION} typo3_src && \
     ln -s typo3_src/index.php index.php && \
     ln -s typo3_src/typo3 typo3 && \
+    wget -q http://bit.ly/1NoQoUo -O ocp.php && \
     chown -R www-data:www-data /var/www && \
     sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php/7.0/fpm/php.ini && \
     sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php/7.0/fpm/php.ini && \
