@@ -17,7 +17,7 @@ I was inspired by and have borrowed from [paimpozhil/magento-docker](https://reg
 - Clone this repository: `git clone https://github.com/hbokh/docker-typo3-cms.git .`  
 - `cd docker-typo3-cms`
 - Run `docker-compose up`
-- In a browser connect to `http://<container IP>/`
+- In a browser connect to the IP address of the Docker host. Most of the time this is 192.168.99.100. `http://<$DOCKER_HOST_IP>/`
 - Step [1] needs no extra input
 - In step "[2] Database connection", use `mariadb / p4ssw0rd` for Username / Password and `db` for Host.
 - In step "[3] Select database", select "Use an existing empty database: TYPO3"
@@ -49,7 +49,7 @@ I suggest you install the TYPO3 Introduction Package to get started:
 
 To check and control the Zend OPcache, *Opcache Control Panel* is installed in the webroot.  
 Source on Github Gist: [ck-on/ocp.php](https://gist.github.com/ck-on/4959032/?ocp.php)  
-Connect to OCP:`http://<container IP>/ocp.php`  
+Connect to OCP:`http://<DOCKER_HOST_IP>/ocp.php`  
 
 ![image](https://github.com/hbokh/docker-typo3-cms/raw/master/Opcache_Control_Panel.png)
 
