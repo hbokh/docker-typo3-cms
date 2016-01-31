@@ -5,9 +5,9 @@ MAINTAINER bokh@xs4all.nl
 # Set this to the latest TYPO3 CMS version:
 ENV TYPO3_VERSION 6.2.17
 
-ENV DB_ENV_USER=mariadb DB_ENV_PASS=p4ssw0rd
+ENV DB_ENV_USER=typo3 DB_ENV_PASS=p4ssw0rd
 
-# Repo's for nginx and PHP5 PPA
+# Repo's for nginx and PHP PPA
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 && \
     echo "deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx" > /etc/apt/sources.list.d/nginx.list
 
@@ -23,7 +23,7 @@ RUN apt-get install -qqy wget nginx mysql-client && \
 # Install TYPO3 CMS and Opcache Control Panel (Bitly-link)
 RUN mkdir -p /var/www/site/htdocs && \
     cd /var/www/site && \
-    wget -O - http://prdownloads.sourceforge.net/typo3/typo3_src-${TYPO3_VERSION}.tar.gz | tar zxf - && \
+    wget -q -O - http://prdownloads.sourceforge.net/typo3/typo3_src-${TYPO3_VERSION}.tar.gz | tar zxf - && \
     cd htdocs && \
     ln -s ../typo3_src-${TYPO3_VERSION} typo3_src && \
     ln -s typo3_src/index.php index.php && \
