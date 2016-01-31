@@ -10,8 +10,7 @@ This little project was started to get some personal experience with multiple Do
 Keep in mind there are **far better** alternatives to be found, for example the [TYPO3-docker-boilerplate](https://github.com/webdevops/TYPO3-docker-boilerplate)!
 
 The TYPO3-container needs a MySQL-container to link to.  
-I started out in 2014 with "[paintedfox/mariadb](https://registry.hub.docker.com/u/paintedfox/mariadb/)", but that image wasn't updated in > 20 months...  
-So I swapped to the official Docker image "[percona:56](https://hub.docker.com/_/percona/)" by the end of January 2016.
+I started out in 2014 with "[paintedfox/mariadb](https://registry.hub.docker.com/u/paintedfox/mariadb/)", but swapped to the official Docker image "[percona:56](https://hub.docker.com/_/percona/)" by the end of January 2016.
 
 I was inspired by and have borrowed from [paimpozhil/magento-docker](https://registry.hub.docker.com/u/paimpozhil/magento-docker/).
 
