@@ -17,7 +17,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
 # Install packages required for TYPO3
 RUN apt-get update -qq
 RUN apt-get install -qqy wget nginx mysql-client && \
-    apt-get install -qqy --no-install-recommends php-curl php7.0-fpm php-gd php-imagick php-mcrypt php7.0-mysql ghostscript graphicsmagick && \
+    apt-get install -qqy --no-install-recommends php-curl php7.0-fpm php-gd php7.0-soap php7.0-xml php7.0-zip php-imagick php-mcrypt php7.0-mysql ghostscript graphicsmagick && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install TYPO3 CMS and Opcache Control Panel (Bitly-link)
