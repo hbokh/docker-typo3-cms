@@ -3,7 +3,7 @@ FROM ubuntu:trusty
 MAINTAINER bokh@xs4all.nl
 
 # Set this to the latest TYPO3 CMS version:
-ENV TYPO3_VERSION 6.2.19
+ENV TYPO3_VERSION 6.2.21
 
 ENV DB_ENV_USER=typo3 DB_ENV_PASS=p4ssw0rd
 
