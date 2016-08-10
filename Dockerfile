@@ -15,8 +15,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C && \
     echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/launchpad-ondrej-php.list
 
 # Install packages required for TYPO3
-RUN apt-get update -qq
-RUN apt-get install -qqy wget nginx mysql-client && \
+RUN apt-get update -qq && \
+    apt-get install -qqy wget nginx mysql-client && \
     apt-get install -qqy --no-install-recommends php-curl php7.0-fpm php-gd php7.0-soap php7.0-xml php7.0-zip php-imagick php-mcrypt php7.0-mysql ghostscript graphicsmagick && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

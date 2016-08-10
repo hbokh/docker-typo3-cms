@@ -1,7 +1,6 @@
 # Docker TYPO3 CMS
 
-[![](https://badge.imagelayers.io/hbokh/docker-typo3-cms.svg)](https://imagelayers.io/?images=hbokh/docker-typo3-cms:latest 'Get your own badge on imagelayers.io')
-
+[![](https://images.microbadger.com/badges/image/hbokh/docker-typo3-cms.svg)](https://microbadger.com/images/hbokh/docker-typo3-cms "Get your own image badge on microbadger.com")
 
 Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM. As of January 2016 on PHP7.  
 Great for learning, testing and demo's. **Don't use in production!**
