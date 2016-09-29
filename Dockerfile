@@ -1,9 +1,9 @@
 FROM ubuntu:trusty
-
 MAINTAINER bokh@xs4all.nl
+ENV REFRESHED_AT 2016-09-29
 
 # Set this to the latest TYPO3 CMS version:
-ENV TYPO3_VERSION 6.2.21
+ENV TYPO3_VERSION 7.6.11
 
 ENV DB_ENV_USER=typo3 DB_ENV_PASS=p4ssw0rd
 
@@ -32,7 +32,8 @@ RUN mkdir -p /var/www/site/htdocs && \
     chown -R www-data:www-data /var/www && \
     sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php/7.0/fpm/php.ini && \
     sed -i 's/post_max_size = 8M/post_max_size = 10M/g' /etc/php/7.0/fpm/php.ini && \
-    sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php/7.0/fpm/php.ini
+    sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 10M/g' /etc/php/7.0/fpm/php.ini && \
+    sed -i 's/;\ max_input_vars = 1000/max_input_vars = 1500/g' /etc/php/7.0/fpm/php.ini
 
 COPY nginx.conf /etc/nginx/nginx.conf
 

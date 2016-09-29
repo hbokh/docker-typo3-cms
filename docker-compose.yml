@@ -3,15 +3,23 @@ version: "2"
 services:
   db:
     image: percona:5.6
+    container_name: db
     environment:
       - MYSQL_ROOT_PASSWORD=p4ssw0rd
       - MYSQL_USER=typo3
       - MYSQL_PASSWORD=p4ssw0rd
       - MYSQL_DATABASE=TYPO3
+    networks:
+      - webapp
 
   typo3cms:
     image: hbokh/docker-typo3-cms:latest
-    links:
-      - db:db
+    container_name: typo3cms
     ports:
       - "80:80"
+    networks:
+      - webapp
+
+networks:
+  webapp:
+    driver: bridge

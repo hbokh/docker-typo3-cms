@@ -2,7 +2,7 @@
 
 [![](https://images.microbadger.com/badges/image/hbokh/docker-typo3-cms.svg)](https://microbadger.com/images/hbokh/docker-typo3-cms "Get your own image badge on microbadger.com")
 
-Container with the latest [TYPO3](http://typo3.org/typo3-cms/) CMS 6.2 LTS, served by nginx and PHP-FPM. As of January 2016 on PHP7.  
+Container with [TYPO3](http://typo3.org/typo3-cms/) CMS, served by nginx and PHP-FPM. As of January 2016 on PHP7.  
 Great for learning, testing and demo's. **Don't use in production!**
 
 This little project was started to get some personal experience with multiple Docker-containers and TYPO3.   
@@ -18,8 +18,8 @@ I was inspired by and have borrowed from [paimpozhil/magento-docker](https://reg
 - Install [Docker](https://docs.docker.com/engine/installation/) and [docker-compose](http://docs.docker.com/compose/install/#install-compose)
 - Clone this repository: `git clone https://github.com/hbokh/docker-typo3-cms.git .`  
 - `cd docker-typo3-cms`
-- Run `docker-compose up`
-- In a browser connect to the IP address of the Docker host. Most of the time this is 192.168.99.100. `http://<$DOCKER_HOST_IP>/`
+- Run `docker-compose -p typo3 up` ("typo3" is the `projectname`)
+- In a browser connect to the IP address of the Docker host. Most of the time this is localhost or  192.168.99.100. `http://<$DOCKER_HOST_IP>/`
 - Step [1] needs no extra input
 - In step "[2] Database connection", use `typo3 / p4ssw0rd` for Username / Password and `db` for Host.
 - In step "[3] Select database", select "Use an existing empty database: TYPO3"
@@ -62,22 +62,21 @@ Connect to OCP:`http://<DOCKER_HOST_IP>/ocp.php`
 `docker pull percona:latest`  
 `docker run -td -p 80:80 --link db:db hbokh/docker-typo3-cms`
 
-## TODO
+### RealURL extension
 
-- Mount external data inside the container.
+Unless you prefer URLs like `http://localhost/index.php?id=34`, you might want to install the RealURL extension: "Speaking URLs for TYPO3 / realurl / v2.1.4 (stable)".  
+Cleaning the caches afterward might be needed.
 
 ## Issues
 
-The issue with the *trustedHostsPattern* was fixed in `start.sh` with a suggestion by [Giovanni Minniti](https://github.com/giminni). (20151227)
+* The issue with the *trustedHostsPattern* was fixed in `start.sh` with a suggestion by [Giovanni Minniti](https://github.com/giminni). (20151227)
 
-### RealURL
+* When running the DB-instance and webserver in seperate containers on separate hosts (e.g. when using Rancher), these environment setting have to be set too: `DB_ENV_USER=typo3` and `DB_ENV_PASS=p4ssw0rd`. If not, an error like this will be shown in the container-log of the DB:
 
-To use RealURL in e.g. the official introduction package go to "Extension Manager" --> "Configure RealURL" and set "Enable automatic configuration". Force a save by clicking the save-button, clear the frontend caches (lightning-icon top right) and reload the site. (20151227)
-
-### Environment
-
-When running the DB-instance and webserver in seperate containers on separate hosts (e.g. when using Rancher), these environment setting have to be set too: `DB_ENV_USER=typo3` and `DB_ENV_PASS=p4ssw0rd`. If not, an error like this will be shown in the container-log of the DB:
-
-    Access denied for user 'root'@'<IP-address>' (using password: NO)
+    `Access denied for user 'root'@'<IP-address>' (using password: NO)`
 
 For some reason this is not needed when running on the same Docker-host.
+
+## TODO
+
+- Mount external data inside the container.
