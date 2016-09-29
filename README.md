@@ -43,7 +43,7 @@ Next go through the same steps as mentioned in the Quick start.
 
 I suggest you install the TYPO3 Introduction Package to get started:
 
-![image](https://github.com/hbokh/docker-typo3-cms/raw/master/TYPO3_introduction.png)
+![image](https://github.com/hbokh/docker-typo3-cms/raw/master/img/Intro_Package.png)
 
 ## Opcache Control Panel
 
@@ -51,7 +51,7 @@ To check and control the Zend OPcache, *Opcache Control Panel* is installed in t
 Source on Github Gist: [ck-on/ocp.php](https://gist.github.com/ck-on/4959032/?ocp.php)  
 Connect to OCP:`http://<DOCKER_HOST_IP>/ocp.php`  
 
-![image](https://github.com/hbokh/docker-typo3-cms/raw/master/Opcache_Control_Panel.png)
+![image](https://github.com/hbokh/docker-typo3-cms/raw/master/img/Opcache_Control_Panel.png)
 
 
 ## Build the container from source
