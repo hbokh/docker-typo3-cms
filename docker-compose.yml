@@ -9,6 +9,8 @@ services:
       - MYSQL_USER=typo3
       - MYSQL_PASSWORD=p4ssw0rd
       - MYSQL_DATABASE=TYPO3
+    volumes:
+      - ./mysql-custom:/etc/mysql/conf.d:ro
     networks:
       - webapp
 
