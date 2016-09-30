@@ -1,11 +1,21 @@
 FROM ubuntu:trusty
 MAINTAINER bokh@xs4all.nl
-ENV REFRESHED_AT 2016-09-29
+ENV REFRESHED_AT 2016-09-30
 
 # Set this to the latest TYPO3 CMS version:
 ENV TYPO3_VERSION 7.6.11
 
-ENV DB_ENV_USER=typo3 DB_ENV_PASS=p4ssw0rd
+# Build-time metadata as defined at http://label-schema.org
+ARG BUILD_DATE
+ARG VCS_REF
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.name="TYPO3 CMS in Docker" \
+      org.label-schema.description="TYPO3 CMS, served by nginx and PHP-FPM" \
+      org.label-schema.url="http://typo3.org/typo3-cms/" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/hbokh/docker-typo3-cms/" \
+      org.label-schema.version=$TYPO3_VERSION \
+      org.label-schema.schema-version="1.0"
 
 # Repo's for nginx and PHP PPA
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 && \
