@@ -13,7 +13,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.description="TYPO3 CMS, served by nginx and PHP-FPM" \
       org.label-schema.url="http://typo3.org/typo3-cms/" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/hbokh/docker-typo3-cms/" \
+      org.label-schema.vcs-type=Git \
+      org.label-schema.vcs-url="https://github.com/hbokh/docker-typo3-cms.git" \
       org.label-schema.version=$TYPO3_VERSION \
       org.label-schema.schema-version="1.0"
 

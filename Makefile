@@ -1,10 +1,24 @@
 ACCOUNT=hbokh
-APP_NAME=docker-typo3-cms
+IMAGE=docker-typo3-cms
+VERSION=7.6.11
+BUILD_DATE=`date -u +"%Y%m%dT%H%MZ"`
+VCS_REF=`git rev-parse --short HEAD`
+TAG=${VERSION}-${BUILD_DATE}-git-${VCS_REF}
 
-default: docker_build
+.PHONY: all default
+default: build
+all: build tag push
 
-docker_build:
+build:
 	@docker build \
 		--build-arg VCS_REF=`git rev-parse --short HEAD` \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-		-t $(ACCOUNT)/$(APP_NAME):latest .
+		-t $(IMAGE) .
+
+tag:
+	@docker tag $(IMAGE) $(ACCOUNT)/$(IMAGE):$(TAG)
+	@docker tag $(IMAGE) $(ACCOUNT)/$(IMAGE):latest
+
+push:
+	@docker push $(ACCOUNT)/$(IMAGE):$(TAG)
+	@docker push $(ACCOUNT)/$(IMAGE):latest
