@@ -1,9 +1,9 @@
 FROM ubuntu:trusty
 MAINTAINER bokh@xs4all.nl
-ENV REFRESHED_AT 2016-09-30
+ENV REFRESHED_AT 2017-04-05
 
 # Set this to the latest TYPO3 CMS version:
-ENV TYPO3_VERSION 7.6.11
+ENV TYPO3_VERSION 7.6.16
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
