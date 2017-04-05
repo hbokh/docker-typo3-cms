@@ -1,6 +1,6 @@
 ACCOUNT=hbokh
 IMAGE=docker-typo3-cms
-VERSION=7.6.11
+VERSION=7.6.16
 #BUILD_DATE=`date -u +"%Y%m%dT%H%MZ"`
 BUILD_DATE=`date -u +"%Y%m%d"`
 VCS_REF=`git rev-parse --short HEAD`
