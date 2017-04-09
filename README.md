@@ -1,6 +1,7 @@
 # Docker TYPO3 CMS
 
-[![](https://images.microbadger.com/badges/image/hbokh/docker-typo3-cms.svg)](https://microbadger.com/images/hbokh/docker-typo3-cms "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/hbokh/docker-typo3-cms.svg)](https://microbadger.com/images/hbokh/docker-typo3-cms "Get your own version badge on microbadger.com")
+[![Docker Stars](https://img.shields.io/docker/stars/hbokh/docker-typo3-cms.svg?maxAge=2592000)]() 
+[![Microbadger](https://images.microbadger.com/badges/image/hbokh/docker-typo3-cms.svg)](https://microbadger.com/images/hbokh/docker-typo3-cms "Get your own image badge on microbadger.com") [![Microbadger](https://images.microbadger.com/badges/version/hbokh/docker-typo3-cms.svg)](https://microbadger.com/images/hbokh/docker-typo3-cms "Get your own version badge on microbadger.com")
 
 Container with [TYPO3](http://typo3.org/typo3-cms/) CMS, served by nginx and PHP-FPM. As of January 2016 on PHP7.  
 Great for learning, testing and demo's. **Don't use in production!**
